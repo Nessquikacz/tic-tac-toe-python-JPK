@@ -115,21 +115,20 @@ def is_full(board):
         return False
 
 
-# board = {'A1': ' . ' , 'A2': ' . ' , 'A3': ' . ' ,
-#         'B1': ' . ' , 'B2': ' . ' , 'B3': ' . ' ,
-#         'C1': ' . ' , 'C2': ' . ' , 'C3': ' . '}
 def print_board(board):
 
 
-    print('   ' + '1' + '   ' + '2' + '   ' + '3')
-    print('A ' + board[0][0] + '|' + board[0][1] + '|' + board[0][2])
-    print("  ---+---+---")
-    print('B ' + board[1][0] + '|' + board[1][1]+ '|' + board[1][2])
-    print("  ---+---+---")
-    print('C ' + board[2][0] + '|' + board[2][1] + '|' + board[2][2])
+    full_board = (f'''   1   2   3
+A  {board[0][0]} | {board[0][1]} | {board[0][2]}
+  ---+---+---
+B  {board[1][0]} | {board[1][1]} | {board[1][2]}
+  ---+---+---
+C  {board[2][0]} | {board[2][1]} | {board[2][2]}''')
 
+    return full_board
 
 board = init_board()
+print(print_board(board))
 
 
 def print_result(winner):
