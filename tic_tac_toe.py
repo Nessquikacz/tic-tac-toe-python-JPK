@@ -1,6 +1,8 @@
 def init_board():
     """Returns an empty 3-by-3 board (with .)."""
-    board = [['.', '.', '.', ], ['.', '.', '.', ], ['.', '.', '.', ]]
+    board = [['.', '.', '.', ], 
+             ['.', '.', '.', ], 
+             ['.', '.', '.', ]]
     return board
 
 
@@ -66,6 +68,36 @@ def mark(board, player, row, col):
 
 def has_won(board, player):
     """Returns True if player has won the game."""
+    soln = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+
+    if 
+    
+    
+    '''#checks if player has three of their marks horizonally
+    for x in range(len(board)):
+        win = True
+          
+        for y in range(len(board)):
+            if board[x, y] != player:
+                win = False
+                continue
+                  
+        if win == True:
+            return(win)
+
+    #checks if player has three of their marks vertically
+    elif for x in range(len(board)):
+        win = True
+          
+        for y in range(len(board)):
+            if board[y][x] != player:
+                win = False
+                continue
+                  
+        if win == True:
+            return(win)
+    
+    #checks if player has three of their marks diagonally'''
     return False
 
 
