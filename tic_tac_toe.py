@@ -59,10 +59,11 @@ def get_ai_move(board, player):
 def mark(board, player, row, col):
     """Marks the element at row & col on the board for player."""
     # check whose turn it is and if given cell is empty it puts the mark inside
+    # check whose turn it is and if given cell is empty it puts the mark inside
     if player.lower() == 'x' and board[row][col] == '.':
-        board[i][j] = 'X'
+        board[row][col] = 'X'
     elif player.lower() == 'o' and board[row][col] == '.':
-        board[i][j] = 'O'
+        board[row][col] = 'O'
     return board
 
 
@@ -103,7 +104,18 @@ def has_won(board, player):
 
 def is_full(board):
     """Returns True if board is full."""
-    return False
+    all_cells = len(board[0]) * len(board)
+    taken_cells = 0
+
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            if board[i][j] != '.':
+                taken_cells += 1
+
+    if taken_cells == all_cells:
+        return True
+    else:
+        return False
 
 
 board = {'A1': ' . ' , 'A2': ' . ' , 'A3': ' . ' ,
