@@ -106,9 +106,19 @@ def is_full(board):
     return False
 
 
+board = {'A1': ' . ' , 'A2': ' . ' , 'A3': ' . ' ,
+        'B1': ' . ' , 'B2': ' . ' , 'B3': ' . ' ,
+        'C1': ' . ' , 'C2': ' . ' , 'C3': ' . '}
 def print_board(board):
-    """Prints a 3-by-3 board on the screen with borders."""
-    pass
+    print('   ' + '1' + '   ' + '2' + '   ' + '3')
+    print('A ' + board['A1'] + '|' + board['A2'] + '|' + board['A3'])
+    print("  ---+---+---")
+    print('B ' + board['B1'] + '|' + board['B2'] + '|' + board['B3'])
+    print("  ---+---+---")
+    print('C ' + board['C1'] + '|' + board['C2'] + '|' + board['C3'])
+
+a = print_board(board)
+print(a)
 
 
 def print_result(winner):
