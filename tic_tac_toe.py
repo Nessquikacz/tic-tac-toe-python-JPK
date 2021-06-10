@@ -1,7 +1,7 @@
 def init_board():
     """Returns an empty 3-by-3 board (with .)."""
-    board = [['.', '.', '.', ], 
-             ['.', '.', '.', ], 
+    board = [['.', '.', '.', ],
+             ['.', '.', '.', ],
              ['.', '.', '.', ]]
     return board
 
@@ -59,7 +59,6 @@ def get_ai_move(board, player):
 def mark(board, player, row, col):
     """Marks the element at row & col on the board for player."""
     # check whose turn it is and if given cell is empty it puts the mark inside
-    # check whose turn it is and if given cell is empty it puts the mark inside
     if player.lower() == 'x' and board[row][col] == '.':
         board[row][col] = 'X'
     elif player.lower() == 'o' and board[row][col] == '.':
@@ -67,36 +66,23 @@ def mark(board, player, row, col):
     return board
 
 
-# def has_won(board, player):
-#     """Returns True if player has won the game."""
-#     pass
-#     # soln = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
-#     '''#checks if player has three of their marks horizonally
-#     for x in range(len(board)):
-#         win = True
-          
-#         for y in range(len(board)):
-#             if board[x, y] != player:
-#                 win = False
-#                 continue
-                  
-#         if win == True:
-#             return(win)
+def has_won(board, player):
+    """Returns True if player has won the game."""
 
-#     #checks if player has three of their marks vertically
-#     elif for x in range(len(board)):
-#         win = True
-          
-#         for y in range(len(board)):
-#             if board[y][x] != player:
-#                 win = False
-#                 continue
-                  
-#         if win == True:
-#             return(win)
-    
-#     #checks if player has three of their marks diagonally'''
-#     # return False
+    for i in range(3):
+        # horizontal wins
+        if board[i][0] == board[i][1] == board[i][2] == player:
+            return True
+        # vertical wins
+        elif board[0][i] == board[1][i] == board[2][i] == player:
+            return True
+        else:
+            return False
+    # diagonal wins
+    if board[0][0] == board[1][1] == board[2][2] == player or board[0][2] == board[1][1] == board[2][0] == player:
+        return True
+    else:
+        return False
 
 
 def is_full(board):
@@ -117,7 +103,6 @@ def is_full(board):
 
 def print_board(board):
 
-
     full_board = (f'''   1   2   3
 A  {board[0][0]} | {board[0][1]} | {board[0][2]}
   ---+---+---
@@ -127,25 +112,27 @@ C  {board[2][0]} | {board[2][1]} | {board[2][2]}''')
 
     return full_board
 
-board = init_board()
-print(print_board(board))
-
 
 def print_result(winner):
     """Congratulates winner or proclaims tie (if winner equals zero)."""
-    pass
+    if winner == 'X':
+        print('Congratulations player x! You won!')
+    elif winner == 'O':
+        print('Congratulations player O! You won!')
+    elif winner == 0:
+        print('Tie!')
 
 
 def tictactoe_game(mode='HUMAN-HUMAN'):
     board = init_board()
 
     # use get_move(), mark(), has_won(), is_full(), and print_board() to create game logic
-    print_board(board)
-    row, col = get_move(board, 1)
-    mark(board, 1, row, col)
+    # print_board(board)
+    #row, col = get_move(board, 1)
+    #mark(board, 1, row, col)
 
-    winner = 0
-    print_result(winner)
+    #winner = 0
+    # print_result(winner)
 
 
 def main_menu():
