@@ -67,39 +67,36 @@ def mark(board, player, row, col):
     return board
 
 
-def has_won(board, player):
-    """Returns True if player has won the game."""
-    soln = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
-
-    if 
-    
-    
-    '''#checks if player has three of their marks horizonally
-    for x in range(len(board)):
-        win = True
+# def has_won(board, player):
+#     """Returns True if player has won the game."""
+#     pass
+#     # soln = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+#     '''#checks if player has three of their marks horizonally
+#     for x in range(len(board)):
+#         win = True
           
-        for y in range(len(board)):
-            if board[x, y] != player:
-                win = False
-                continue
+#         for y in range(len(board)):
+#             if board[x, y] != player:
+#                 win = False
+#                 continue
                   
-        if win == True:
-            return(win)
+#         if win == True:
+#             return(win)
 
-    #checks if player has three of their marks vertically
-    elif for x in range(len(board)):
-        win = True
+#     #checks if player has three of their marks vertically
+#     elif for x in range(len(board)):
+#         win = True
           
-        for y in range(len(board)):
-            if board[y][x] != player:
-                win = False
-                continue
+#         for y in range(len(board)):
+#             if board[y][x] != player:
+#                 win = False
+#                 continue
                   
-        if win == True:
-            return(win)
+#         if win == True:
+#             return(win)
     
-    #checks if player has three of their marks diagonally'''
-    return False
+#     #checks if player has three of their marks diagonally'''
+#     # return False
 
 
 def is_full(board):
@@ -118,19 +115,21 @@ def is_full(board):
         return False
 
 
-board = {'A1': ' . ' , 'A2': ' . ' , 'A3': ' . ' ,
-        'B1': ' . ' , 'B2': ' . ' , 'B3': ' . ' ,
-        'C1': ' . ' , 'C2': ' . ' , 'C3': ' . '}
+# board = {'A1': ' . ' , 'A2': ' . ' , 'A3': ' . ' ,
+#         'B1': ' . ' , 'B2': ' . ' , 'B3': ' . ' ,
+#         'C1': ' . ' , 'C2': ' . ' , 'C3': ' . '}
 def print_board(board):
-    print('   ' + '1' + '   ' + '2' + '   ' + '3')
-    print('A ' + board['A1'] + '|' + board['A2'] + '|' + board['A3'])
-    print("  ---+---+---")
-    print('B ' + board['B1'] + '|' + board['B2'] + '|' + board['B3'])
-    print("  ---+---+---")
-    print('C ' + board['C1'] + '|' + board['C2'] + '|' + board['C3'])
 
-a = print_board(board)
-print(a)
+
+    print('   ' + '1' + '   ' + '2' + '   ' + '3')
+    print('A ' + board[0][0] + '|' + board[0][1] + '|' + board[0][2])
+    print("  ---+---+---")
+    print('B ' + board[1][0] + '|' + board[1][1]+ '|' + board[1][2])
+    print("  ---+---+---")
+    print('C ' + board[2][0] + '|' + board[2][1] + '|' + board[2][2])
+
+
+board = init_board()
 
 
 def print_result(winner):
