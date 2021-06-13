@@ -9,6 +9,8 @@ def init_board():
 def get_move(board, player):
     """Returns the coordinates of a valid move for player on board."""
 
+    
+
     row, col = 0, 0
     valid_numbers = ['1', '2', '3']
     valid_letters = ['a', 'b', 'c']
@@ -115,7 +117,7 @@ C  {board[2][0]} | {board[2][1]} | {board[2][2]}''')
 def print_result(winner):
     """Congratulates winner or proclaims tie (if winner equals zero)."""
     if winner == 'X':
-        print('Congratulations player x! You won!')
+        print('Congratulations player X! You won!')
     elif winner == 'O':
         print('Congratulations player O! You won!')
     elif winner == 0:
@@ -125,28 +127,41 @@ def print_result(winner):
 def tictactoe_game(mode='HUMAN-HUMAN'):
 
     full_board = False
+    player_x = 'X'
+    player_o = 'O'
     board = init_board()
     print_board(board)
-    row_x, col_x = get_move(board, 'X')
-    marked_board = mark(board, 'X', row_x, col_x)
-    x_won = has_won(marked_board, 'X')
-    o_won = has_won(marked_board, 'O')
-    print_board(marked_board)
-    
+    row_x, col_x = get_move(board, player_x)
+    marked_board = mark(board, player_x, row_x, col_x)
+    x_won = has_won(marked_board, player_x)
+    o_won = has_won(marked_board, player_o)
+    print_board(marked_board)    
 
     while x_won == False and is_full(marked_board) == False and o_won == False:
-        row_o, col_o = get_move(marked_board, 'O')
-        marked_board = mark(marked_board, 'O', row_o, col_o)
+        row_o, col_o = get_move(marked_board, player_o)
+        marked_board = mark(marked_board, player_o, row_o, col_o)
         print_board(marked_board)
-        o_won = has_won(marked_board, 'O')
-        full_board = is_full(marked_board)
+        o_won = has_won(marked_board, player_o)
+        
+        if o_won == True:
+            winner = 'O'
+            print_result(winner)   
+            break
 
-
-        row_x, col_x = get_move(marked_board, 'X')
-        marked_board = mark(marked_board, 'X', row_x, col_x)
+        row_x, col_x = get_move(marked_board, player_x)
+        marked_board = mark(marked_board, player_x, row_x, col_x)
         print_board(marked_board)
-        x_won = has_won(marked_board, 'X')
+        x_won = has_won(marked_board, player_x)
+
+        if x_won == True:
+            winner = 'X'
+            print_result(winner)  
+            break
+
         full_board = is_full(marked_board)
+        if full_board == True:
+            winner = 0
+            print_result(winner)
 
        
     # use get_move(), mark(), has_won(), is_full(), and print_board() to create game logic
