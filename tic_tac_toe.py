@@ -67,30 +67,21 @@ def mark(board, player, row, col):
 
 def has_won(board, player):
     """Returns True if player has won the game."""
-
+    win = False
 
     for i in range(3):
         # horizontal wins
         if board[i][0] == board[i][1] == board[i][2] == player:
-            return True
+            win = True
         # vertical wins
         elif board[0][i] == board[1][i] == board[2][i] == player:
-            return True
-        else:
-            return False
+            win = True
     # diagonal wins
     if board[0][0] == board[1][1] == board[2][2] == player or board[0][2] == board[1][1] == board[2][0] == player:
-        return True
-    else:
-        return False
+        win = True
 
-board_2 = [['.', 'x', '.'],
-          ['.', 'x', '.'],
-          ['.', 'x', '.']]
-
-xyz = has_won(board_2, 'x')
-print(xyz)
-    
+    return win
+       
 
 
 def is_full(board):
@@ -136,27 +127,25 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
     full_board = False
     board = init_board()
     print_board(board)
-    row_x, col_x = get_move(board, 'x')
-    marked_board = mark(board, 'x', row_x, col_x)
-    x_won = has_won(marked_board, 'x')
-    o_won = has_won(marked_board, 'o')
+    row_x, col_x = get_move(board, 'X')
+    marked_board = mark(board, 'X', row_x, col_x)
+    x_won = has_won(marked_board, 'X')
+    o_won = has_won(marked_board, 'O')
     print_board(marked_board)
     
 
     while x_won == False and is_full(marked_board) == False and o_won == False:
-        row_o, col_o = get_move(marked_board, 'o')
-        marked_board = mark(marked_board, 'o', row_o, col_o)
+        row_o, col_o = get_move(marked_board, 'O')
+        marked_board = mark(marked_board, 'O', row_o, col_o)
         print_board(marked_board)
-        o_won = has_won(marked_board, 'o')
-        print(o_won)
+        o_won = has_won(marked_board, 'O')
         full_board = is_full(marked_board)
 
 
-        row_x, col_x = get_move(marked_board, 'x')
-        marked_board = mark(marked_board, 'x', row_x, col_x)
+        row_x, col_x = get_move(marked_board, 'X')
+        marked_board = mark(marked_board, 'X', row_x, col_x)
         print_board(marked_board)
-        x_won = has_won(marked_board, 'x')
-        print(x_won)
+        x_won = has_won(marked_board, 'X')
         full_board = is_full(marked_board)
 
        
@@ -169,9 +158,9 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
     # print_result(winner)
 
 
-# def main_menu():
-#     tictactoe_game('HUMAN-HUMAN')
+def main_menu():
+    tictactoe_game('HUMAN-HUMAN')
 
 
-# if __name__ == '__main__':
-#     main_menu()
+if __name__ == '__main__':
+    main_menu()
