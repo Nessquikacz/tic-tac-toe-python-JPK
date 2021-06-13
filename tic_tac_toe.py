@@ -18,14 +18,13 @@ def get_move(board, player):
     # repetitively ask for valid input of the position
     while not is_valid_input:
 
-        print('Provide input')
         # converts string into list
 
-        user_input = list(input())
+        user_input = list(input('Please provide coordinate: '))
 
         # invalid input if more than 2 characters
         if len(user_input) > 2:
-            print('Invalid input, try again')
+            print('Invalid coordinate, please try again')
         else:
             # checks if input is in valid is in valid inputs list
             if user_input[0] in valid_inputs and user_input[1] in valid_inputs:
@@ -45,7 +44,7 @@ def get_move(board, player):
                             print('Wrong move, try again')
 
             else:
-                print('Invalid input, try again')
+                print('Invalid coordinate, please try again')
 
     return row, col
 
@@ -69,6 +68,7 @@ def mark(board, player, row, col):
 def has_won(board, player):
     """Returns True if player has won the game."""
 
+
     for i in range(3):
         # horizontal wins
         if board[i][0] == board[i][1] == board[i][2] == player:
@@ -83,6 +83,14 @@ def has_won(board, player):
         return True
     else:
         return False
+
+board_2 = [['.', 'x', '.'],
+          ['.', 'x', '.'],
+          ['.', 'x', '.']]
+
+xyz = has_won(board_2, 'x')
+print(xyz)
+    
 
 
 def is_full(board):
@@ -110,7 +118,7 @@ B  {board[1][0]} | {board[1][1]} | {board[1][2]}
   ---+---+---
 C  {board[2][0]} | {board[2][1]} | {board[2][2]}''')
 
-    return full_board
+    print(full_board)
 
 
 def print_result(winner):
@@ -124,8 +132,34 @@ def print_result(winner):
 
 
 def tictactoe_game(mode='HUMAN-HUMAN'):
-    board = init_board()
 
+    full_board = False
+    board = init_board()
+    print_board(board)
+    row_x, col_x = get_move(board, 'x')
+    marked_board = mark(board, 'x', row_x, col_x)
+    x_won = has_won(marked_board, 'x')
+    o_won = has_won(marked_board, 'o')
+    print_board(marked_board)
+    
+
+    while x_won == False and is_full(marked_board) == False and o_won == False:
+        row_o, col_o = get_move(marked_board, 'o')
+        marked_board = mark(marked_board, 'o', row_o, col_o)
+        print_board(marked_board)
+        o_won = has_won(marked_board, 'o')
+        print(o_won)
+        full_board = is_full(marked_board)
+
+
+        row_x, col_x = get_move(marked_board, 'x')
+        marked_board = mark(marked_board, 'x', row_x, col_x)
+        print_board(marked_board)
+        x_won = has_won(marked_board, 'x')
+        print(x_won)
+        full_board = is_full(marked_board)
+
+       
     # use get_move(), mark(), has_won(), is_full(), and print_board() to create game logic
     # print_board(board)
     #row, col = get_move(board, 1)
@@ -135,9 +169,9 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
     # print_result(winner)
 
 
-def main_menu():
-    tictactoe_game('HUMAN-HUMAN')
+# def main_menu():
+#     tictactoe_game('HUMAN-HUMAN')
 
 
-if __name__ == '__main__':
-    main_menu()
+# if __name__ == '__main__':
+#     main_menu()
