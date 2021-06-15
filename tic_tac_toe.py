@@ -1,3 +1,16 @@
+import os
+
+def logo_tictactoe():
+    logo ='''
+ _   _      _             _             
+| | (_)    | |           | |            
+| |_ _  ___| |_ __ _  ___| |_ ___   ___ 
+| __| |/ __| __/ _` |/ __| __/ _ \ / _ \\
+| |_| | (__| || (_| | (__| || (_) |  __/
+ \__|_|\___|\__\__,_|\___|\__\___/ \___|'''
+    print(logo)
+
+
 def init_board():
     """Returns an empty 3-by-3 board (with .)."""
     board = [['.', '.', '.', ],
@@ -124,6 +137,32 @@ def print_result(winner):
         print('Tie!')
 
 
+def game_menu():
+    logo_tictactoe()
+       
+    print('''\nGame Rules:
+    1. First player is an X, second player is an O.
+    2. Player pick a coordinate on the board, trying to create diagonal/vertical/horizonal line.
+    3. First player to create a line with their mark wins.
+    4. In case of whole board getting filled without previous win, there is a tie.
+    5. Have fun!''')  
+
+    levels = ['1', '2', '3', '4']
+    while True:
+        mode = input('''\nChoose your game mode 
+        1 - Easy mode (3x3 board)
+        2 - Hard mode (5x5 board)
+        3 - Fun mode (Find out :) )
+        4 - vs AI 
+        ''')
+
+        if mode in levels:
+            return mode
+        else:
+            print('Provide valid level.')      
+    
+
+
 def tictactoe_game(mode='HUMAN-HUMAN'):
 
     full_board = False
@@ -163,17 +202,10 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
             winner = 0
             print_result(winner)
 
-       
-    # use get_move(), mark(), has_won(), is_full(), and print_board() to create game logic
-    # print_board(board)
-    #row, col = get_move(board, 1)
-    #mark(board, 1, row, col)
-
-    #winner = 0
-    # print_result(winner)
-
 
 def main_menu():
+    game_menu()
+    os.system('cls')
     tictactoe_game('HUMAN-HUMAN')
 
 
